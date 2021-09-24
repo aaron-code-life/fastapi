@@ -7,7 +7,7 @@ FastAdmin是一款基于ThinkPHP5+Bootstrap的极速后台开发框架。（文�
 php think apicrud -t table -f=true
 ```
 
->删除一键生成的curd接口相关文档
+>删除一键生成的curd接口相关文件
 ```bash
 php think apicrud -t table -d 1
 ```
