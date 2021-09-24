@@ -1,43 +1,48 @@
 <?php
 
-namespace app\common\model;
+namespace app\api\model;
 
 use think\Model;
 
 
-class Feedback extends Model
+class Comments extends Model
 {
 
+    
+
+    
+
     // 表名
-    protected $name = 'feedback';
+    protected $name = 'comments';
     
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = 'int';
-
+    // 时间字段取出后的默认时间格式
+    protected $dateFormat = 'Y-m-d H:i:s';
     // 定义时间戳字段名
     protected $createTime = 'createtime';
     protected $updateTime = false;
     protected $deleteTime = false;
 
-
-
-    const LOAD_QUS = 1;
-    const IMG_QUS = 2;
-    const BUG_QUS = 3;
-    const FEED_TYPE_DATA = [
-        self::LOAD_QUS => '下载/加载问题',
-        self::IMG_QUS => '图片问题',
-        self::BUG_QUS => 'BUG反馈'
-    ];
-
     // 追加属性
     protected $append = [
-        'type_text'
-    ];
 
-    public function getTypeTextAttr($value,$data){
-        return self::FEED_TYPE_DATA[$data['type']];
+    ];
+    
+
+    
+
+
+
+
+
+
+
+    public function articles()
+    {
+        return $this->belongsTo('Articles', 'article_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
+
 
     public function user()
     {

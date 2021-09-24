@@ -22,6 +22,9 @@ class {%controllerName%} extends Api
     protected $modelValidate = true;//默认开启模型验证
     protected $extendFields = [];//自定义扩展字段
 
+    protected $addBeforeBehaviors = [];//新增前行为
+    protected $addAfterBehaviors = [];//新增后行为
+
     public function _initialize()
     {
         parent::_initialize();

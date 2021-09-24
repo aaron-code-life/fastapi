@@ -11,16 +11,20 @@
 // +----------------------------------------------------------------------
 // 应用行为扩展定义文件
 return [
-    //座椅配置新增前行为
-    'before_add_sitting' => [
-        'app\\api\\behavior\\Sitting',
+    //文章新增前行为
+    'before_add_articles' => [
+        'app\\api\\behavior\\Articles',
     ],
-    //座椅配置新增后行为
-    'after_add_sitting' => [
-        'app\\api\\behavior\\Sitting',
+    //文章新增后行为
+    'after_add_articles' => [
+        'app\\api\\behavior\\Articles',
     ],
-    //意见反馈新增前行为
-    'before_add_feedback' => [
-        'app\\api\\behavior\\Feedback',
+    //评论新增前行为
+    'before_add_comments' => [
+        'app\\api\\behavior\\Comments',
+    ],
+    //评论新增后行为
+    'after_add_comments' => [
+        'app\\api\\behavior\\Comments',
     ],
 ];
