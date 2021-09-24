@@ -1,0 +1,27 @@
+
+    /**
+     * 查看
+     */
+    public function index()
+    {
+        //当前是否为关联查询
+        $this->relationSearch = {%relationSearch%};
+        //设置过滤方法
+        $this->request->filter(['strip_tags', 'trim']);
+
+        list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+
+        $list = $this->model
+                {%relationWithList%}
+                ->where($where)
+                ->order($sort, $order)
+                ->paginate($limit);
+
+        foreach ($list as $row) {
+            {%visibleFieldList%}
+            {%relationVisibleFieldList%}
+        }
+
+        $this->success('获取成功',$list);
+
+    }

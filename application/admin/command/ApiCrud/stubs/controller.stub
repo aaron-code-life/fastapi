@@ -1,0 +1,45 @@
+<?php
+
+namespace {%controllerNamespace%};
+
+use app\common\controller\Api;
+
+/**
+ * {%tableComment%}
+ */
+class {%controllerName%} extends Api
+{
+
+    // 无需登录的接口,*表示全部
+    protected $noNeedLogin = ['*'];
+    // 无需鉴权的接口,*表示全部
+    protected $noNeedRight = ['*'];
+    /**
+     * {%modelName%}模型对象
+     * @var \{%modelNamespace%}\{%modelName%}
+     */
+    protected $model = null;
+    protected $modelValidate = true;//默认开启模型验证
+    protected $extendFields = [];//自定义扩展字段
+
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->model = new \{%modelNamespace%}\{%modelName%};
+{%extendFields%}
+{%controllerAssignList%}
+    }
+
+    /**
+     * 默认生成的控制器所继承的父类中有index/add/edit/del/multi五个基础方法、destroy/restore/recyclebin三个回收站方法
+     * 因此在当前控制器中可不用编写增删改查的代码,除非需要自己控制这部分逻辑
+     * 需要将application/api/library/traits/APi.php中对应的方法复制到当前控制器,然后进行修改
+     */
+
+{%apiAddDoc%}
+    public function add(){
+        parent::add();
+    }
+
+{%controllerIndex%}
+}
